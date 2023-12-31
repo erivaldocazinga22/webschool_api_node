@@ -7,7 +7,8 @@
   "license": "MIT",
   "scripts": {
     "dev": "nodemon src/server.js",
-    "start": "node src/server.js"
+    "start": "node src/server.js",
+    "vercel-build": "node src/server.js"
   },
   "dependencies": {
     "bcrypt": "^5.1.1",
@@ -19,6 +20,7 @@
     "mysql2": "^3.6.5"
   },
   "devDependencies": {
+    "@vercel/node": "^3.0.14",
     "nodemon": "^3.0.2"
   }
 }
