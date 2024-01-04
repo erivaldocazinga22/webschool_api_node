@@ -1,6 +1,5 @@
 const bcrypt = require("bcrypt");
 const pool = require("./connection");
-require("dotenv").config();
 
 const { createToken } = require("../utils/jsonWebToken");
 
@@ -18,11 +17,7 @@ async function SignInModel({ email, password}) {
         return null;
     }
 
-    const token = await createToken({ 
-        id: data[0].id, 
-        email: data[0].email, 
-        identificacao: data[0].identificacao 
-    });
+    const token = await createToken({ id: data[0].id });
 
     return token;
 }
