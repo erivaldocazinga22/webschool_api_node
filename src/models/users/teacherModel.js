@@ -1,9 +1,22 @@
 const bcrypt = require("bcrypt");
-const pool = require("./connection");
+const pool = require("../connection");
+
+async function getAll() {
+  try {
+    const [data] = await pool.query("SELECT * FROM usuarios WHERE nivel = ?", [2]);
+    const [teachers] = await pool.query("SELECT * FROM professores");
+
+    return { data, teachers };
+  } catch (error) {
+    console.error("Error getting user:", error);
+    throw error;
+  }
+}
 
 async function createUser(body, file) {
   try {
-    const { processo, identificacao, nome, sexo, email, telefone, senha, nivel } = body;
+    return body;
+    /* const { processo, identificacao, nome, sexo, email, telefone, senha, nivel } = body;
     const avatar_url = file.filename;
 
     const hashedPassword = await bcrypt.hash(senha, 12);
@@ -28,7 +41,7 @@ async function createUser(body, file) {
       ]
     );
 
-    return { data };
+    return { data }; */
   } catch (error) {
     console.error("Error creating user:", error);
     throw error;
@@ -36,5 +49,6 @@ async function createUser(body, file) {
 }
 
 module.exports = {
+  getAll,
   createUser,
 };

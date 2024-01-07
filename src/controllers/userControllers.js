@@ -1,4 +1,4 @@
-const UserModel = require("../models/userModel");
+const UserModel = require("../models/users/adminModel");
 
 async function CreateUser(request, response) {
     const data = await UserModel.createUser(request.body, request.file);

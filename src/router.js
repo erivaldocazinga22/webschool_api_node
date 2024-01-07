@@ -11,7 +11,7 @@ const userController = require("./controllers/userControllers");
 
 
 router.use(express.static("src/view"));
-router.use("/files",express.static('public/uploads/profiles'));
+router.use("/files",express.static("public/uploads/profiles"));
 
 // Rota de Login
 router.post("/register", signController);
